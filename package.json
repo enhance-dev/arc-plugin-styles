@@ -1,0 +1,44 @@
+{
+  "name": "@architect/plugin-enhance-styles",
+  "version": "0.0.0",
+  "description": "Plugin for generating enhance CSS utility classes",
+  "main": "src/plugins/enhance-styles/index.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=14"
+  },
+  "files": [
+    "src/*"
+  ],
+  "scripts": {
+    "lint": "eslint src test --fix",
+    "test": "tape test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enhance-dev/plugin-enhance-styles.git"
+  },
+  "keywords": [],
+  "author": "dam",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/enhance-dev/plugin-enhance-styles/issues"
+  },
+  "homepage": "https://github.com/enhance-dev/plugin-enhance-styles#readme",
+  "dependencies": {
+    "@architect/functions": "^5.1.0",
+    "@enhance/styles": "^1.1.1",
+    "esm": "^3.2.25"
+  },
+  "devDependencies": {
+    "@architect/eslint-config": "^2.0.1",
+    "@architect/sandbox": "^5.2.4",
+    "eslint": "^8.14.0",
+    "tap-arc": "^0.3.4",
+    "tape": "^5.5.3",
+    "tiny-json-http": "^7.4.2"
+  },
+  "eslintConfig": {
+    "extends": "@architect/eslint-config"
+  }
+}
