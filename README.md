@@ -1,28 +1,33 @@
-#`plugin-enhance-styles`
-Plugin for generating enhance CSS utility classes.
+# `arc-plugin-styles`
+
+Plugin for generating Enhance CSS utility classes in an [Architect](https://arc.codes) app.
 
 ## Install
-`npm i @enhance/plugin-enhance-styles`
+
+`npm i @enhance/arc-plugin-styles`
 
 ## Usage
+
 In your `app.arc` file:
-``` architect
+
+```arc
 @app
 enhnc-styl
 
-# Define you plugins pragma
+# Define your plugins pragma and add the enhance-styles plugin
 @plugins
-# Add the enhance-styles plugin module
-enhance/plugin-enhance-styles
-```
+enhance/arc-plugin-styles
 
 # Define the styles pragma
 @enhance-styles
-# Optionally add a path to the config.json file to use
-./config.json
+filename utilities.css # defaults to "styles.css"
+config ./enhance-styles.json
 ``` 
-> Update the config.json file to include your settings.
-> See the [enhance-styles documentation](https://github.com/enhance-dev/enhance-styles)
 
-You will now be able to load a utility css file from 
-`<link rel="stylesheet" href="_styles/index.css">`
+> Configure `enhance-styles` by providing a .json file with the `config` option. See the [enhance-styles documentation](https://github.com/enhance-dev/enhance-styles).
+
+You will now be able to load a utility css file from
+
+```html
+<link rel="stylesheet" href="/_static/utilities.css">
+```

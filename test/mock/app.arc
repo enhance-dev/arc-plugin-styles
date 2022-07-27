@@ -2,11 +2,16 @@
 styl-mock
 
 @static
+folder ./dist
 fingerprint true
 
 @http
 get /
 
 @plugins
-architect/enhance-styles
-  src ../../
+enhance/arc-plugin-styles
+  src ../..
+
+@enhance-styles
+filename utility-classes.css
+config ./enhance-styles.json
