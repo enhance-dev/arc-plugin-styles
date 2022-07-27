@@ -21,13 +21,13 @@ enhance/arc-plugin-enhance-styles
 # Define the styles pragma
 @enhance-styles
 filename utilities.css # defaults to "styles.css"
-config ./enhance-styles.json # WIP
+config ./enhance-styles.json
 ``` 
 
-> Update the config.json file to include your settings. See the [enhance-styles documentation](https://github.com/enhance-dev/enhance-styles).
+> Configure `enhance-styles` by providing a .json file with the `config` option. See the [enhance-styles documentation](https://github.com/enhance-dev/enhance-styles).
 
 You will now be able to load a utility css file from
 
 ```html
-<link rel="stylesheet" href="_styles/styles.css">
+<link rel="stylesheet" href="/_static/utilities.css">
 ```

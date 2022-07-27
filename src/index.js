@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 require = require('esm')(module)
 
-const { writeFileSync } = require('fs')
+const { readFileSync, writeFileSync } = require('fs')
 const path = require('path')
 const enhanceStyles = require('@enhance/styles/index.mjs').default
 
@@ -31,6 +31,7 @@ const deploy = {
  */
 function verify ({ arc, inventory }) {
   // TODO: helpful error if inventory doesn't have static or static.folder
+  // TODO: helpful error if @enhance-styles not set in arc
   return inventory.inv.static?.folder && arc['enhance-styles']?.length > 0
 }
 
@@ -39,7 +40,7 @@ function verify ({ arc, inventory }) {
  * @param {object} params
  * @param {object} params.arc
  * @param {object} params.inventory
- * @returns {object} config
+ * @returns {{stylesConfig: string, path: string}}
  */
 function createConfig ({ arc, inventory }) {
   const pluginConfig = Object.fromEntries(arc['enhance-styles'])
@@ -50,10 +51,17 @@ function createConfig ({ arc, inventory }) {
     filename,
   )
 
-  // TODO: read pluginConfig.config, return as stylesConfig
+  let stylesConfig = '{}'
+  if (pluginConfig.config) {
+    const pathToConfig = path.join(
+      inventory.inv._project.cwd,
+      pluginConfig.config,
+    )
+    stylesConfig = readFileSync(pathToConfig, 'utf-8')
+  }
 
   return {
-    stylesConfig: {},
+    stylesConfig,
     path: pathToStaticStyles,
   }
 }
@@ -65,7 +73,7 @@ function createConfig ({ arc, inventory }) {
  * @param {string} config.path
  */
 function generateAndSave ({ stylesConfig, path }) {
-  const styles = enhanceStyles(JSON.stringify(stylesConfig))
+  const styles = enhanceStyles(stylesConfig)
   writeFileSync(path, styles)
 }
 

@@ -6,7 +6,9 @@ const sandbox = require('@architect/sandbox')
 
 const workingDirectory = join(process.cwd(), 'test', 'mock')
 const port = 6661
+const appStaticFolder = 'dist'
 const stylesFileName = 'utility-classes.css' // configured in mock/app.arc
+const stylesConfigBase = 24 // configured in mock/enhance-styles.json
 const url = (path) => `http://localhost:${port}${path}`
 
 test(`Start Arc Sandbox in ${workingDirectory}`, async t => {
@@ -19,12 +21,10 @@ test(`Start Arc Sandbox in ${workingDirectory}`, async t => {
   t.pass('Sandbox started with enhance-styles plugin')
 })
 
-// TODO: test default config
-
-// TODO: test with custom static directory name
+// TODO: test base Arc app with minimal config
 
 test('Sandbox working and styles resolving', async t => {
-  t.plan(2)
+  t.plan(3)
 
   const rootRequest = await get({ url: url('/') })
   const stylesPath = rootRequest?.body?.link
@@ -32,14 +32,13 @@ test('Sandbox working and styles resolving', async t => {
 
   const cssRequest = await get({ url: url(stylesPath) })
   const css = cssRequest.body
-  t.ok(css, 'Got styles!')
+  t.ok(css, 'Got styles.')
+  t.ok(css.indexOf(`html {font-size: ${stylesConfigBase}px;}`) > 0, 'Styles configured.')
 })
-
-// TODO: test with enhance-styles.json
 
 test(`Cleanup ${stylesFileName}`, t => {
   t.plan(1)
-  unlinkSync(join(workingDirectory, 'public', stylesFileName))
+  unlinkSync(join(workingDirectory, appStaticFolder, stylesFileName))
   t.pass('Test files cleaned up')
 })
 

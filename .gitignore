@@ -2,6 +2,3 @@ node_modules
 npm-debug.log*
 .env
 .DS_Store
-
-test/mock/public/static.json
-test/mock/public/*.css
