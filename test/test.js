@@ -9,19 +9,17 @@ const port = 6661
 const stylesFileName = 'utility-classes.css' // configured in mock/app.arc
 const url = (path) => `http://localhost:${port}${path}`
 
-test('Start Arc Sandbox with enhance-styles plugin', async t => {
+test(`Start Arc Sandbox in ${workingDirectory}`, async t => {
   t.plan(1)
   await sandbox.start({
-    quiet: true,
+    // quiet: true,
     cwd: workingDirectory,
     port,
   })
-  t.pass('Sandbox started')
+  t.pass('Sandbox started with enhance-styles plugin')
 })
 
 test('Sandbox working and styles resolving', async t => {
-  t.plan(2)
-
   const rootRequest = await get({ url: url('/') })
   const stylesPath = rootRequest?.body?.link
   t.ok(stylesPath, `Sandbox root works; styles path: "${stylesPath}"` )
@@ -31,6 +29,7 @@ test('Sandbox working and styles resolving', async t => {
   t.ok(css, 'Got styles!')
 
   // TODO: test that styles are configured
+  t.end()
 })
 
 test(`Cleanup ${stylesFileName}`, t => {

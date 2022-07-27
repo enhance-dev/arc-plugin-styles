@@ -50,6 +50,10 @@ function generateAndSave ({ arc, inventory }) {
     filename = arc.styles[0][1]
   }
 
+  console.log('inventory.inv._project.cwd', inventory.inv._project.cwd)
+  console.log('inventory.inv.static.folder', inventory.inv.static.folder)
+  console.log('filename', filename)
+
   const pathToStaticStyles = path.join(
     inventory.inv._project.cwd,
     inventory.inv.static.folder,
