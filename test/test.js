@@ -1,34 +1,41 @@
-const { join } = require('path')
-const { unlinkSync } = require('fs')
-const test = require('tape')
+const { join } = require('node:path')
+const { unlinkSync } = require('node:fs')
 const { get } = require('tiny-json-http')
+const test = require('tape')
 const sandbox = require('@architect/sandbox')
+
 const workingDirectory = join(process.cwd(), 'test', 'mock')
 const port = 6661
-const url = (path, port) => `http://localhost:${port}${path}`
+const stylesFileName = 'utility-classes.css' // configured in mock/app.arc
+const url = (path) => `http://localhost:${port}${path}`
 
-test('Start sandbox', async t => {
+test('Start Arc Sandbox with enhance-styles plugin', async t => {
   t.plan(1)
   await sandbox.start({
+    quiet: true,
     cwd: workingDirectory,
-    port
+    port,
   })
   t.pass('Sandbox started')
 })
 
-test('Test for style tag link', async t => {
-  t.plan(1)
-  const result = await get({
-    url: url('/', port),
-    port
-  })
-  const page = result?.body
-  t.ok(page, `Got styles \n ${page}` )
+test('Sandbox working and styles resolving', async t => {
+  t.plan(2)
+
+  const rootRequest = await get({ url: url('/') })
+  const stylesPath = rootRequest?.body?.link
+  t.ok(stylesPath, `Sandbox root works; styles path: "${stylesPath}"` )
+
+  const cssRequest = await get({ url: url(stylesPath) })
+  const css = cssRequest.body
+  t.ok(css, 'Got styles!')
+
+  // TODO: test that styles are configured
 })
 
-test('cleanup', t => {
+test(`Cleanup ${stylesFileName}`, t => {
   t.plan(1)
-  unlinkSync(join(workingDirectory, 'public', 'styles.css'))
+  unlinkSync(join(workingDirectory, 'public', stylesFileName))
   t.pass('Test files cleaned up')
 })
 

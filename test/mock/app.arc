@@ -8,5 +8,8 @@ fingerprint true
 get /
 
 @plugins
-architect/enhance-styles
-  src ../../
+arc-plugin-enhance-styles
+  src ../..
+
+@styles
+filename utility-classes.css
