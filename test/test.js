@@ -12,14 +12,20 @@ const url = (path) => `http://localhost:${port}${path}`
 test(`Start Arc Sandbox in ${workingDirectory}`, async t => {
   t.plan(1)
   await sandbox.start({
-    // quiet: true,
+    quiet: true,
     cwd: workingDirectory,
     port,
   })
   t.pass('Sandbox started with enhance-styles plugin')
 })
 
+// TODO: test default config
+
+// TODO: test with custom static directory name
+
 test('Sandbox working and styles resolving', async t => {
+  t.plan(2)
+
   const rootRequest = await get({ url: url('/') })
   const stylesPath = rootRequest?.body?.link
   t.ok(stylesPath, `Sandbox root works; styles path: "${stylesPath}"` )
@@ -27,10 +33,9 @@ test('Sandbox working and styles resolving', async t => {
   const cssRequest = await get({ url: url(stylesPath) })
   const css = cssRequest.body
   t.ok(css, 'Got styles!')
-
-  // TODO: test that styles are configured
-  t.end()
 })
+
+// TODO: test with enhance-styles.json
 
 test(`Cleanup ${stylesFileName}`, t => {
   t.plan(1)

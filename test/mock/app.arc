@@ -8,8 +8,9 @@ fingerprint true
 get /
 
 @plugins
-arc-plugin-enhance-styles
+enhance/arc-plugin-enhance-styles
   src ../..
 
 @enhance-styles
 filename utility-classes.css
+config ./enhance-styles.json

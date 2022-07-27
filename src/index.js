@@ -8,14 +8,14 @@ const enhanceStyles = require('@enhance/styles/index.mjs').default
 const sandbox = {
   start (params) {
     verify(params)
-    generateAndSave(params)
+    generateAndSave(createConfig(params))
   },
 }
 
 const deploy = {
   start (params) {
     verify(params)
-    generateAndSave(params)
+    generateAndSave(createConfig(params))
 
     // always return cloudformation
     return params.cloudformation
@@ -35,30 +35,38 @@ function verify ({ arc, inventory }) {
 }
 
 /**
- * Run enhance-styles and save result
+ * Create configuration for enhance-styles creation
  * @param {object} params
  * @param {object} params.arc
  * @param {object} params.inventory
+ * @returns {object} config
  */
-function generateAndSave ({ arc, inventory }) {
-  let filename = 'styles.css'
-  if (
-    arc['enhance-styles'].length > 0
-    && arc['enhance-styles'][0]
-    && arc['enhance-styles'][0][0] === 'filename'
-  ) {
-    filename = arc['enhance-styles'][0][1]
-  }
-
+function createConfig ({ arc, inventory }) {
+  const pluginConfig = Object.fromEntries(arc['enhance-styles'])
+  const filename = pluginConfig?.filename || 'styles.css'
   const pathToStaticStyles = path.join(
     inventory.inv._project.cwd,
     inventory.inv.static.folder,
     filename,
   )
-  // TODO: provide enhance-styles config
-  const styles = enhanceStyles(JSON.stringify({}))
 
-  writeFileSync(pathToStaticStyles, styles)
+  // TODO: read pluginConfig.config, return as stylesConfig
+
+  return {
+    stylesConfig: {},
+    path: pathToStaticStyles,
+  }
+}
+
+/**
+ * Run enhance-styles and save result
+ * @param {object} config
+ * @param {object} config.stylesConfig
+ * @param {string} config.path
+ */
+function generateAndSave ({ stylesConfig, path }) {
+  const styles = enhanceStyles(JSON.stringify(stylesConfig))
+  writeFileSync(path, styles)
 }
 
 module.exports = { sandbox, deploy }
