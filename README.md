@@ -1,10 +1,10 @@
-# `arc-plugin-enhance-styles`
+# `arc-plugin-styles`
 
 Plugin for generating Enhance CSS utility classes in an [Architect](https://arc.codes) app.
 
 ## Install
 
-`npm i @enhance/arc-plugin-enhance-styles`
+`npm i @enhance/arc-plugin-styles`
 
 ## Usage
 
@@ -16,7 +16,7 @@ enhnc-styl
 
 # Define your plugins pragma and add the enhance-styles plugin
 @plugins
-enhance/arc-plugin-enhance-styles
+enhance/arc-plugin-styles
 
 # Define the styles pragma
 @enhance-styles

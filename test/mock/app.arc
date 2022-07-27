@@ -9,7 +9,7 @@ fingerprint true
 get /
 
 @plugins
-enhance/arc-plugin-enhance-styles
+enhance/arc-plugin-styles
   src ../..
 
 @enhance-styles
