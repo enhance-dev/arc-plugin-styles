@@ -1,5 +1,5 @@
 {
-  "name": "@architect/arc-plugin-enhance-styles",
+  "name": "@enahnce/arc-plugin-enhance-styles",
   "version": "0.0.1",
   "description": "Plugin for generating enhance CSS utility classes",
   "main": "src/index.js",
@@ -18,7 +18,8 @@
     "url": "git+https://github.com/enhance-dev/arc-plugin-enhance-styles.git"
   },
   "keywords": [
-    "architect"
+    "architect",
+    "enhance"
   ],
   "author": "dam",
   "license": "Apache-2.0",

@@ -11,5 +11,5 @@ get /
 arc-plugin-enhance-styles
   src ../..
 
-@styles
+@enhance-styles
 filename utility-classes.css

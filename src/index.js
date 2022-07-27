@@ -30,8 +30,8 @@ const deploy = {
  * @returns {boolean} is valid
  */
 function verify ({ arc, inventory }) {
-  // TODO: error if inventory doesn't have static or static.folder
-  return inventory.inv.static?.folder && arc.styles?.length > 0
+  // TODO: helpful error if inventory doesn't have static or static.folder
+  return inventory.inv.static?.folder && arc['enhance-styles']?.length > 0
 }
 
 /**
@@ -43,16 +43,12 @@ function verify ({ arc, inventory }) {
 function generateAndSave ({ arc, inventory }) {
   let filename = 'styles.css'
   if (
-    arc.styles.length > 0
-    && arc.styles[0]
-    && arc.styles[0][0] === 'filename'
+    arc['enhance-styles'].length > 0
+    && arc['enhance-styles'][0]
+    && arc['enhance-styles'][0][0] === 'filename'
   ) {
-    filename = arc.styles[0][1]
+    filename = arc['enhance-styles'][0][1]
   }
-
-  console.log('inventory.inv._project.cwd', inventory.inv._project.cwd)
-  console.log('inventory.inv.static.folder', inventory.inv.static.folder)
-  console.log('filename', filename)
 
   const pathToStaticStyles = path.join(
     inventory.inv._project.cwd,
