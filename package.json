@@ -29,7 +29,7 @@
   "homepage": "https://github.com/enhance-dev/arc-plugin-styles#readme",
   "dependencies": {
     "@architect/functions": "^5.2.1",
-    "@enhance/styles": "^1.1.2",
+    "@enhance/styles": "^1.1.3",
     "esm": "^3.2.25"
   },
   "devDependencies": {
