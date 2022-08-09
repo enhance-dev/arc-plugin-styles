@@ -43,7 +43,7 @@ function verify ({ arc, inventory }) {
  * @returns {{stylesConfig: string, path: string}}
  */
 function createConfig ({ arc, inventory }) {
-  const pluginConfig = Object.fromEntries(arc['enhance-styles'])
+  const pluginConfig = Object.fromEntries(arc['enhance-styles'] || [])
   const filename = pluginConfig?.filename || 'styles.css'
   const pathToStaticStyles = path.join(
     inventory.inv._project.cwd,
