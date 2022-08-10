@@ -1,6 +1,6 @@
 {
   "name": "@enhance/arc-plugin-styles",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Plugin for generating enhance CSS utility classes",
   "main": "src/index.js",
   "engines": {
