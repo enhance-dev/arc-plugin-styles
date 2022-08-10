@@ -61,6 +61,7 @@ function createConfig ({ arc, inventory }) {
   else {
     pathToConfig = path.join(
       __dirname,
+      '..',
       'node_modules',
       '@enhance',
       'styles',
