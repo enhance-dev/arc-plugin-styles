@@ -51,14 +51,24 @@ function createConfig ({ arc, inventory }) {
     filename,
   )
 
-  let stylesConfig = '{}'
+  let pathToConfig
   if (pluginConfig.config) {
-    const pathToConfig = path.join(
+    pathToConfig = path.join(
       inventory.inv._project.cwd,
       pluginConfig.config,
     )
-    stylesConfig = readFileSync(pathToConfig, 'utf-8')
   }
+  else {
+    pathToConfig = path.join(
+      __dirname,
+      'node_modules',
+      '@enhance',
+      'styles',
+      'config.json'
+    )
+  }
+
+  let stylesConfig = readFileSync(pathToConfig, 'utf-8')
 
   return {
     stylesConfig,
