@@ -62,6 +62,7 @@ function createConfig ({ arc, inventory }) {
     pathToConfig = path.join(
       __dirname,
       '..',
+      '..',
       'styles',
       'config.json'
     )
