@@ -1,6 +1,6 @@
 {
   "name": "@enhance/arc-plugin-styles",
-  "version": "0.0.10",
+  "version": "1.0.0",
   "description": "Plugin for generating enhance CSS utility classes",
   "main": "src/index.js",
   "engines": {
@@ -29,7 +29,7 @@
   "homepage": "https://github.com/enhance-dev/arc-plugin-styles#readme",
   "dependencies": {
     "@architect/functions": "^5.2.3",
-    "@enhance/styles": "^2.0.0"
+    "@enhance/styles": "^2.0.2"
   },
   "devDependencies": {
     "@architect/eslint-config": "^2.0.1",
