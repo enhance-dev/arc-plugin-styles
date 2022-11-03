@@ -1,15 +1,23 @@
-// eslint-disable-next-line
-require = require('esm')(module)
-
-const { readFileSync, writeFileSync } = require('fs')
-const path = require('path')
-const enhanceStyles = require('@enhance/styles/index.mjs').default
+const { readFileSync, writeFileSync } = require('node:fs')
+const path = require('node:path')
 
 const sandbox = {
-  start (params) {
-    verify(params)
-    generateAndSave(createConfig(params))
+  async start (params) {
+    if (verify(params)) {
+      const config = createConfig(params)
+      await generateAndSave(config)
+    }
   },
+  async watcher (params) {
+    if (verify(params)) {
+      const { filename } = params
+      const config = createConfig(params)
+
+      if (filename === config.pathToConfig) {
+        await generateAndSave(config)
+      }
+    }
+  }
 }
 
 const deploy = {
@@ -30,9 +38,13 @@ const deploy = {
  * @returns {boolean} is valid
  */
 function verify ({ arc, inventory }) {
-  // TODO: helpful error if inventory doesn't have static or static.folder
-  // TODO: helpful error if @enhance-styles not set in arc
-  return inventory.inv.static?.folder && arc['enhance-styles']?.length > 0
+  const hasStatic = inventory.inv.static?.folder
+  const hasConfig = arc['enhance-styles']?.length > 0
+
+  if (!hasStatic) { console.warn('  Enhance Styles: Architect static must be enabled') }
+  if (!hasConfig) { console.warn('  Enhance Styles: @enhance-styles config required') }
+
+  return hasStatic && hasConfig
 }
 
 /**
@@ -40,7 +52,7 @@ function verify ({ arc, inventory }) {
  * @param {object} params
  * @param {object} params.arc
  * @param {object} params.inventory
- * @returns {{stylesConfig: string, path: string}}
+ * @returns {{stylesConfig: string, path: string, pathToConfig: null|string}}
  */
 function createConfig ({ arc, inventory }) {
   const pluginConfig = Object.fromEntries(arc['enhance-styles'] || [])
@@ -73,6 +85,7 @@ function createConfig ({ arc, inventory }) {
   return {
     stylesConfig,
     path: pathToStaticStyles,
+    pathToConfig,
   }
 }
 
@@ -82,7 +95,8 @@ function createConfig ({ arc, inventory }) {
  * @param {object} config.stylesConfig
  * @param {string} config.path
  */
-function generateAndSave ({ stylesConfig, path }) {
+async function generateAndSave ({ stylesConfig, path }) {
+  const { default: enhanceStyles } = await import('@enhance/styles')
   const styles = enhanceStyles(stylesConfig)
   writeFileSync(path, styles)
 }

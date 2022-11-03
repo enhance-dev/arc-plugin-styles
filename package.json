@@ -28,16 +28,15 @@
   },
   "homepage": "https://github.com/enhance-dev/arc-plugin-styles#readme",
   "dependencies": {
-    "@architect/functions": "^5.2.1",
-    "@enhance/styles": "^2.0.2",
-    "esm": "^3.2.25"
+    "@architect/functions": "^5.2.3",
+    "@enhance/styles": "^2.0.2"
   },
   "devDependencies": {
     "@architect/eslint-config": "^2.0.1",
-    "@architect/sandbox": "^5.3.1",
-    "eslint": "^8.20.0",
+    "@architect/sandbox": "^5.3.4",
+    "eslint": "^8.26.0",
     "tap-arc": "^0.3.5",
-    "tape": "^5.5.3",
+    "tape": "^5.6.1",
     "tiny-json-http": "^7.4.2"
   },
   "eslintConfig": {
