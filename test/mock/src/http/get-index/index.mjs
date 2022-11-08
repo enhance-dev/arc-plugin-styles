@@ -1,13 +1,21 @@
 import arc from '@architect/functions'
-
-const stylesFileName = 'utility-classes.css' // configured in app.arc
+import getStyles from '../../../../../src/get-styles.mjs'
 
 const handler = arc.http.async(
   async function() {
     return {
-      json: { link: arc.static(stylesFileName) },
+      html: /* html */`
+<html>
+<head>
+  ${getStyles()}
+</head>
+<body class="font-sans p4 flex justify-around">
+  <h1 class="text4">enhance-styles'd</h1>
+</body>
+</html>
+      `.trim(),
     }
-  }
+  },
 )
 
 export { handler }

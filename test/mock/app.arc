@@ -14,4 +14,4 @@ enhance/arc-plugin-styles
 
 @enhance-styles
 filename utility-classes.css
-config ./enhance-styles.json
+config styles-config.json
