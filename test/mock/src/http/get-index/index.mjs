@@ -8,15 +8,13 @@ const handler = arc.http.async(
     return {
       html: /* html */`
 <html>
-<head>
-  ${getStyles()}
-</head>
-<body class="font-sans text-2 p4">
-  <div class="grid flow-row justify-center gap1">
+<head>${getStyles(INLINE)}</head>
+<body class="font-sans text-2">
+  <div class="p4 grid flow-row justify-center gap1">
     <h1 class="text4">enhance-styles'd</h1>
 
     <textarea class="font-mono">
-      ${getStyles(!INLINE)}
+      ${getStyles()}
     </textarea>
 
     <textarea rows="25" class="font-mono">
