@@ -35,4 +35,21 @@ const sandbox = {
   },
 }
 
-module.exports = { hydrate, sandbox }
+const set = {
+  http () {
+    return [
+      {
+        method: 'get',
+        path: '/enhance-styles.css',
+        src: `${__dirname}/handlers/css`,
+      },
+      {
+        method: 'get',
+        path: '/enhance-styles-guide',
+        src: `${__dirname}/handlers/guide`,
+      },
+    ]
+  },
+}
+
+module.exports = { hydrate, sandbox, set }
