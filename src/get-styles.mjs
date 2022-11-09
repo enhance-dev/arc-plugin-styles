@@ -1,7 +1,10 @@
 import { join } from 'node:path';
 import { readFileSync } from 'node:fs';
 
-// * utility for plugin consumers to grab a link tag or inline styles
+/**
+ * Utility for plugin consumers to grab a link tag or inline styles
+ * @returns {string} <style> or <link> tag
+ */
 export default function getStyles() {
 	const pluginOutputDir = join(
 		process.cwd(),
