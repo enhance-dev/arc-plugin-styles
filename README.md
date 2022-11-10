@@ -1,33 +1,62 @@
-# `arc-plugin-styles`
+# `@enhance/arc-plugin-styles`
 
-Plugin for generating Enhance CSS utility classes in an [Architect](https://arc.codes) app.
+Plugin for generating [Enhance CSS utility classes](https://github.com/enhance-dev/enhance-styles) in an [Architect](https://arc.codes) app.
 
 ## Install
 
-`npm i @enhance/arc-plugin-styles`
+```
+npm i @enhance/arc-plugin-styles
+```
 
 ## Usage
+
+### Setup
 
 In your `app.arc` file:
 
 ```arc
 @app
-enhnc-styl
+my-arc-app
 
 # Define your plugins pragma and add the enhance-styles plugin
 @plugins
 enhance/arc-plugin-styles
 
-# Define the styles pragma
+# Enable the plugin
 @enhance-styles
-filename utilities.css # defaults to "styles.css"
+# with an optional JSON config:
 config ./enhance-styles.json
 ```
 
 > Configure `enhance-styles` by providing a .json file with the `config` option. See the [enhance-styles documentation](https://github.com/enhance-dev/enhance-styles).
 
-You will now be able to load a utility css file from
+### Utility functions - `getStyles()`
 
-```html
-<link rel="stylesheet" href="/_static/utilities.css">
+A utility function is provided to access your generated stylesheet.
+
+```js
+import getStyles from '@enhance/arc-plugin-styles/get-styles'
+
+const styles = getStyles()
+styles.link    // a <link rel="stylesheet"> tag
+styles.style   // a <style> tag for inline styles
+styles.path    // root-relative path to the .css file
 ```
+
+Furthermore, individual methods can be imported:
+
+```js
+import {
+  getLinkTag,
+  getStyleTag,
+  getPath,
+} from '@enhance/arc-plugin-styles/get-styles'
+
+getLinkTag()   // a <link rel="stylesheet"> tag
+getStyleTag()  // a <style> tag for inline styles
+getPath()      // root-relative path to the .css file
+```
+
+## Roadmap
+
+/_styleguide

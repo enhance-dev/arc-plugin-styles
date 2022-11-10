@@ -7,13 +7,11 @@ const defaultConfig = require('@enhance/styles/config.json')
  * @param {object} params
  * @param {object} params.arc
  * @param {object} params.inventory
- * @returns {{configPath: null|string, cwd: string, fileName: string, stylesConfig: string}}
+ * @returns {{configPath: null|string, cwd: string, stylesConfig: string}}
  */
 function createConfig ({ arc, inventory }) {
   const pluginConfig = Object.fromEntries(arc['enhance-styles'] || [])
   const cwd = inventory.inv._project.cwd
-  // const fileName = pluginConfig?.filename || 'styles.css'
-  const fileName = 'styles.css'
 
   let stylesConfig = null
   let configPath = null
@@ -29,7 +27,6 @@ function createConfig ({ arc, inventory }) {
   return {
     cwd,
     configPath,
-    fileName,
     stylesConfig,
   }
 }

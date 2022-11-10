@@ -42,11 +42,13 @@ const set = {
         method: 'get',
         path: '/enhance-styles.css',
         src: `${__dirname}/handlers/css`,
+        config: { views: false },
       },
       {
         method: 'get',
-        path: '/enhance-styles-guide',
+        path: '/_styleguide',
         src: `${__dirname}/handlers/guide`,
+        config: { views: false },
       },
     ]
   },

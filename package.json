@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "exports": {
     ".": "./src/index.js",
-    "./get-styles.mjs": "./src/get-styles.mjs"
+    "./get-styles": "./src/get-styles.mjs"
   },
   "engines": {
     "node": ">=14"

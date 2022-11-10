@@ -32,7 +32,7 @@ test('Sandbox working and styles resolving', async t => {
   t.ok(css, '.css available via HTTP')
   t.ok(css.indexOf(`html {font-size: ${stylesConfigBase}px;}`) > 0, 'Styles configured.')
 
-  const styleGuideRequest = await get({ url: url('/enhance-styles-guide') })
+  const styleGuideRequest = await get({ url: url('/_styleguide') })
   const styleGuide = styleGuideRequest.body
   t.ok(styleGuide, 'Style guide is available.')
 })
