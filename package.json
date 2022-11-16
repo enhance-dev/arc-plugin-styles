@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "lint": "eslint src test --fix",
-    "test": "npm run lint && tape test/test.js | tap-arc"
+    "test": "npm run lint && tape test/**/*.js | tap-arc"
   },
   "repository": {
     "type": "git",

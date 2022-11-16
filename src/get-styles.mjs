@@ -1,7 +1,7 @@
 import { join } from 'node:path'
 import { readFileSync } from 'node:fs'
 const CSS_FILENAME = 'generated.css'
-const PATH = '/enhance-styles.css'
+const CSS_PATH = '/enhance-styles.css'
 let css = null
 
 /**
@@ -28,18 +28,23 @@ export const getStyleTag = function () {
       CSS_FILENAME,
     );
 
-    css = readFileSync(stylesFilePath, { encoding: 'utf-8' })
+    try {
+      css = readFileSync(stylesFilePath, { encoding: 'utf-8' })
+
+    } catch (error) {
+
+    }
   }
 
-  return `<style>${css}</style>`
+  return `<style>${css || '/* enhance-styles placeholder */'}</style>`
 }
 
 /** @returns {string} <link> tag with reference to generated stylesheet */
 export const getLinkTag = function () {
-  return `<link rel="stylesheet" href="${PATH}">`
+  return `<link rel="stylesheet" href="${CSS_PATH}">`
 }
 
 /** @returns {string} root-relative path to stylesheet */
 export const getPath = function () {
-  return PATH
+  return CSS_PATH
 }

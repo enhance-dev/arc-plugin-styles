@@ -16,7 +16,7 @@ function createConfig ({ arc, inventory }) {
   let stylesConfig = null
   let configPath = null
 
-  if (pluginConfig.config) {
+  if (pluginConfig?.config) {
     configPath = join(cwd, pluginConfig.config)
     stylesConfig = readFileSync(configPath, 'utf-8')
   }
