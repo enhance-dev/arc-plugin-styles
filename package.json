@@ -1,17 +1,27 @@
 {
   "name": "@enhance/arc-plugin-styles",
-  "version": "2.0.0-RC.1",
+  "version": "2.0.0-RC.2",
   "description": "Plugin for generating enhance CSS utility classes",
-  "main": "src/index.js",
+  "license": "Apache-2.0",
+  "author": "dam",
+  "homepage": "https://github.com/enhance-dev/arc-plugin-styles#readme",
+  "bugs": {
+    "url": "https://github.com/enhance-dev/arc-plugin-styles/issues"
+  },
+  "main": "./src/index.js",
   "exports": {
     ".": "./src/index.js",
-    "./get-styles": "./src/get-styles.mjs"
+    "./src/*": null,
+    "./get-styles": "./src/get-styles.js",
+    "./get-styles.mjs": "./src/get-styles.mjs",
+    "./get-styles.js": "./src/get-styles.js"
   },
   "engines": {
     "node": ">=14"
   },
   "files": [
-    "src/*"
+    "./src/*",
+    "LICENSE"
   ],
   "scripts": {
     "lint": "eslint src test --fix",
@@ -21,16 +31,6 @@
     "type": "git",
     "url": "git+https://github.com/enhance-dev/arc-plugin-styles.git"
   },
-  "keywords": [
-    "architect",
-    "enhance"
-  ],
-  "author": "dam",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/enhance-dev/arc-plugin-styles/issues"
-  },
-  "homepage": "https://github.com/enhance-dev/arc-plugin-styles#readme",
   "dependencies": {
     "@architect/functions": "^5.2.3",
     "@architect/inventory": "^3.3.3",
@@ -46,5 +46,9 @@
   },
   "eslintConfig": {
     "extends": "@architect/eslint-config"
-  }
+  },
+  "keywords": [
+    "architect",
+    "enhance"
+  ]
 }
