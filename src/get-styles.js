@@ -1,5 +1,5 @@
-import { join } from 'node:path'
-import { readFileSync } from 'node:fs'
+const { join } = require( 'node:path')
+const { readFileSync } = require( 'node:fs')
 const CSS_FILENAME = 'generated.css'
 const CSS_PATH = '/enhance-styles.css'
 let css = null
@@ -8,16 +8,16 @@ let css = null
  * Utility for plugin consumers to grab a link tag or inline styles
  * @returns {{style: string, link: string, path: string}}
  */
-export default function getStyles() {
+function getStyles () {
   return {
     style: getStyleTag(),
     link: getLinkTag(),
     path: getPath(),
-  };
+  }
 }
 
 /** @returns {string} <style> tag with all generated utility classes */
-export const getStyleTag = function () {
+function getStyleTag () {
   if (!css) {
     const stylesFilePath = join(
       process.cwd(),
@@ -26,11 +26,12 @@ export const getStyleTag = function () {
       'shared',
       'enhance-styles',
       CSS_FILENAME,
-    );
+    )
 
     try {
       css = readFileSync(stylesFilePath, { encoding: 'utf-8' })
-    } catch (error) {
+    }
+    catch (error) {
       console.error(error)
     }
   }
@@ -39,11 +40,17 @@ export const getStyleTag = function () {
 }
 
 /** @returns {string} <link> tag with reference to generated stylesheet */
-export const getLinkTag = function () {
+function getLinkTag () {
   return `<link rel="stylesheet" href="${CSS_PATH}">`
 }
 
 /** @returns {string} root-relative path to stylesheet */
-export const getPath = function () {
+function getPath () {
   return CSS_PATH
 }
+
+module.exports = getStyles
+module.exports.getStyles = getStyles
+module.exports.getStyleTag = getStyleTag
+module.exports.getLinkTag = getLinkTag
+module.exports.getPath = getPath
