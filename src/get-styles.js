@@ -1,5 +1,5 @@
-const { join } = require( 'node:path')
-const { readFileSync } = require( 'node:fs')
+const { join } = require('node:path')
+const { readFileSync } = require('node:fs')
 const CSS_FILENAME = 'generated.css'
 const CSS_PATH = '/enhance-styles.css'
 let css = null
@@ -32,7 +32,7 @@ function getStyleTag () {
       css = readFileSync(stylesFilePath, { encoding: 'utf-8' })
     }
     catch (error) {
-      console.error(error)
+      console.debug(`Unable to read ${CSS_FILENAME}`)
     }
   }
 

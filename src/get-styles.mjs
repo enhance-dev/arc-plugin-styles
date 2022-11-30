@@ -31,7 +31,7 @@ export const getStyleTag = function () {
     try {
       css = readFileSync(stylesFilePath, { encoding: 'utf-8' })
     } catch (error) {
-      console.error(error)
+      console.debug(`Unable to read ${CSS_FILENAME}`)
     }
   }
 

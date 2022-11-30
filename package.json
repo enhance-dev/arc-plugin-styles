@@ -32,14 +32,14 @@
     "url": "git+https://github.com/enhance-dev/arc-plugin-styles.git"
   },
   "dependencies": {
-    "@architect/functions": "^5.2.3",
-    "@architect/inventory": "^3.3.3",
+    "@architect/functions": "^5.3.0",
+    "@architect/inventory": "^3.3.4",
     "@enhance/styles": "^2.0.2"
   },
   "devDependencies": {
     "@architect/eslint-config": "^2.0.1",
-    "@architect/sandbox": "^5.3.5",
-    "eslint": "^8.27.0",
+    "@architect/sandbox": "^5.4.1",
+    "eslint": "^8.28.0",
     "tap-arc": "^0.3.5",
     "tape": "^5.6.1",
     "tiny-json-http": "^7.4.2"
