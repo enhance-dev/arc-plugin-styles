@@ -49,7 +49,8 @@ function getPath () {
   return CSS_PATH
 }
 
-module.exports = getStyles
+module.exports = getStyles // legacy
+// this is the main interface:
 module.exports.getStyles = getStyles
 module.exports.getStyleTag = getStyleTag
 module.exports.getLinkTag = getLinkTag

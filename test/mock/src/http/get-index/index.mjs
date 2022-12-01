@@ -1,28 +1,22 @@
 import arc from '@architect/functions'
-import getStyles, {
-  getLinkTag,
-  getStyleTag,
-  getPath,
-} from '../../../../../src/get-styles.mjs'
+import { styles } from '../../../../../src/index.js'
 
 const handler = arc.http.async(async function () {
-  const styles = getStyles()
-
   return {
     html: /* html */ `
 <html>
-<head>${styles.style}</head>
+<head>${styles.getAll().style}</head>
 <body class="font-sans text-2">
   <div class="p4 grid flow-row justify-center gap1">
     <h1 class="text4">enhance-styles'd</h1>
 
     <textarea rows="50" class="font-mono">
-PATH: ${getPath()}
+PATH: ${styles.getPath()}
 
-LINK TAG: ${getLinkTag()}
+LINK TAG: ${styles.getLinkTag()}
 
 STYLE TAG:
-${getStyleTag()}
+${styles.getStyleTag()}
     </textarea>
   </div>
 </body>
