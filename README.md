@@ -30,7 +30,7 @@ config ./enhance-styles.json
 
 > Configure `enhance-styles` by providing a .json file with the `config` option. See the [enhance-styles documentation](https://github.com/enhance-dev/enhance-styles).
 
-### Utility functions - `getStyles()`
+### Utility functions
 
 Utility functions are provided to access your generated stylesheet:
 
