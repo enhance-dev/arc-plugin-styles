@@ -32,31 +32,37 @@ config ./enhance-styles.json
 
 ### Utility functions - `getStyles()`
 
-A utility function is provided to access your generated stylesheet.
+Utility functions are provided to access your generated stylesheet:
 
 ```js
-import getStyles from '@enhance/arc-plugin-styles/get-styles'
+import { styles } from '@enhance/arc-plugin-styles'
 
-const styles = getStyles()
-styles.link    // a <link rel="stylesheet"> tag
-styles.style   // a <style> tag for inline styles
-styles.path    // root-relative path to the .css file
+styles.getLinkTag()   // a <link rel="stylesheet"> tag
+styles.getStyleTag()  // a <style> tag for inline styles
+styles.getPath()      // root-relative path to the .css file
 ```
 
-Furthermore, individual methods can be imported:
+`getAll()` is also available to create an object with each result:
 
 ```js
-import {
-  getLinkTag,
-  getStyleTag,
-  getPath,
-} from '@enhance/arc-plugin-styles/get-styles'
+import { styles } from '@enhance/arc-plugin-styles'
 
-getLinkTag()   // a <link rel="stylesheet"> tag
-getStyleTag()  // a <style> tag for inline styles
-getPath()      // root-relative path to the .css file
+const myStyles = styles.getAll()
+myStyles.link    // a <link rel="stylesheet"> tag
+myStyles.style   // a <style> tag for inline styles
+myStyles.path    // root-relative path to the .css file
 ```
 
 ## Roadmap
 
 /_styleguide
+
+## Development
+
+### Experimental releases
+
+Since this plugin is used in parent plugins (namely Enhance), it can be helpful to distribute a version via npm.
+
+1. in a feature branch, create a commit and copy the SHA
+1. set the `"version"` in package.json like `0.0.0-experimental-<SHA>`
+1. publish with the experimental tag: `npm publish --tag experimental`
