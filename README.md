@@ -35,22 +35,22 @@ config ./enhance-styles.json
 Utility functions are provided to access your generated stylesheet:
 
 ```js
-import { styles } from '@enhance/arc-plugin-styles'
+import { getStyles } from '@enhance/arc-plugin-styles'
 
-styles.getLinkTag()   // a <link rel="stylesheet"> tag
-styles.getStyleTag()  // a <style> tag for inline styles
-styles.getPath()      // root-relative path to the .css file
+getStyles.linkTag()   // a <link rel="stylesheet"> tag
+getStyles.styleTag()  // a <style> tag for inline styles
+getStyles.path()      // root-relative path to the .css file
 ```
 
 `getAll()` is also available to create an object with each result:
 
 ```js
-import { styles } from '@enhance/arc-plugin-styles'
+import { getStyles } from '@enhance/arc-plugin-styles'
 
-const myStyles = styles.getAll()
-myStyles.link    // a <link rel="stylesheet"> tag
-myStyles.style   // a <style> tag for inline styles
-myStyles.path    // root-relative path to the .css file
+const styles = getStyles.all()
+styles.link    // a <link rel="stylesheet"> tag
+styles.style   // a <style> tag for inline styles
+styles.path    // root-relative path to the .css file
 ```
 
 ## Roadmap
