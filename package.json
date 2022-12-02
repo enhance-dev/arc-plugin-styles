@@ -1,6 +1,6 @@
 {
   "name": "@enhance/arc-plugin-styles",
-  "version": "2.1.0",
+  "version": "2.0.3-rc.1",
   "description": "Plugin for generating enhance CSS utility classes",
   "license": "Apache-2.0",
   "author": "dam",
@@ -13,7 +13,6 @@
     ".": "./src/index.js",
     "./src/*": null,
     "./get-styles": "./src/get-styles.js",
-    "./get-styles.mjs": "./src/get-styles.mjs",
     "./get-styles.js": "./src/get-styles.js"
   },
   "engines": {
@@ -25,7 +24,7 @@
   ],
   "scripts": {
     "lint": "eslint src test --fix",
-    "test": "npm run lint && tape test/**/*.js | tap-arc"
+    "test": "npm run lint && tape test/**/*.*js | tap-arc"
   },
   "repository": {
     "type": "git",
@@ -45,7 +44,17 @@
     "tiny-json-http": "^7.4.2"
   },
   "eslintConfig": {
-    "extends": "@architect/eslint-config"
+    "extends": "@architect/eslint-config",
+    "overrides": [
+      {
+        "files": [
+          "*.mjs"
+        ],
+        "parserOptions": {
+          "sourceType": "module"
+        }
+      }
+    ]
   },
   "keywords": [
     "architect",

@@ -1,10 +1,6 @@
 @app
 styl-mock
 
-@static
-folder ./dist
-fingerprint true
-
 @http
 get /
 

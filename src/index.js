@@ -1,5 +1,6 @@
 const createConfig = require('./_create-config')
 const generateAndSave = require('./_generate')
+const { getStyles, getLinkTag, getPath, getStyleTag } = require('./get-styles')
 const TEMP_DIR_NAME = 'tmp'
 
 const hydrate = {
@@ -27,7 +28,6 @@ const sandbox = {
       console.log('  Enhance Styles: config changed, rebuilding.')
       await generateAndSave(config)
     }
-
   },
 }
 
@@ -50,4 +50,18 @@ const set = {
   },
 }
 
-module.exports = { hydrate, sandbox, set }
+// main Arc plugin interface
+module.exports = {
+  hydrate,
+  sandbox,
+  set,
+}
+
+// export interface for helpers
+exports = module.exports // shenanigans
+exports.getStyles = { // named export for ESM
+  all: getStyles,
+  linkTag: getLinkTag,
+  styleTag: getStyleTag,
+  path: getPath,
+}
