@@ -1,8 +1,8 @@
-const test = require('tape')
-const { getStyles } = require('../')
+import test from 'tape'
+import { getStyles } from '../src/index.js'
 const { all, styleTag, linkTag, path, } = getStyles
 
-test('CJS getStyles utility functions', async (t) => {
+test('ESM getStyles utility functions', async (t) => {
 
   t.equal(typeof all, 'function', 'all is a function')
   t.equal(typeof styleTag, 'function', 'styleTag is a function')

@@ -59,9 +59,9 @@ module.exports = {
 
 // export interface for helpers
 exports = module.exports // shenanigans
-exports.styles = { // named export for ESM
-  getAll: getStyles,
-  getLinkTag,
-  getStyleTag,
-  getPath,
+exports.getStyles = { // named export for ESM
+  all: getStyles,
+  linkTag: getLinkTag,
+  styleTag: getStyleTag,
+  path: getPath,
 }
