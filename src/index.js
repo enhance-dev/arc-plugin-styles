@@ -1,7 +1,7 @@
 const createConfig = require('./_create-config')
 const generateAndSave = require('./_generate')
 const { getStyles, getLinkTag, getPath, getStyleTag } = require('./get-styles')
-const TEMP_DIR_NAME = 'tmp'
+const TEMP_DIR_NAME = '.enhance'
 
 const hydrate = {
   async copy ({ arc, copy, inventory }) {

@@ -1,6 +1,6 @@
 const { writeFileSync, mkdirSync } = require('node:fs')
 const { join } = require('node:path')
-const TEMP_DIR_NAME = 'tmp'
+const TEMP_DIR_NAME = '.enhance'
 const CSS_FILENAME = 'generated.css'
 const CONFIG_FILENAME = 'config.json'
 
