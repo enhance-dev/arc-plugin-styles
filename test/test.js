@@ -30,7 +30,6 @@ test('Sandbox working and styles resolving', async t => {
   const css = cssRequest.body
   t.ok(css, '.css available via HTTP')
   t.ok(css.indexOf(`@media only screen and (min-width:${xlQuery})`) > 0, 'Styles configured.')
-  // t.ok(css.indexOf(`html {font-size: ${stylesConfigBase}px;}`) > 0, 'Styles configured.')
 
   const styleGuideRequest = await get({ url: url('/_styleguide') })
   const styleGuide = styleGuideRequest.body
