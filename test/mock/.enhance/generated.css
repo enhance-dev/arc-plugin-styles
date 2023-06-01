@@ -3,10 +3,9 @@
  * For more information please see the documentation at : https://github.com/enhance-dev/enhance-styles#readme
  */
 
-/*** Theme ***/
-:root {
-  
+
 /*** Theme Colors ***/
+:root {
 
   --grey-100: hsl(0, 0%, 86%);
   --grey-200: hsl(0, 0%, 76%);
@@ -19,14 +18,11 @@
   --grey-900: hsl(0, 0%, 6%);
     
 
-
-  
-/*** Custom Properties ***/
-  
-  
-  
-  
 }
+
+
+
+
 
 /*** Reset ***/
 *,
