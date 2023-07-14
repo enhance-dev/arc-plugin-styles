@@ -365,7 +365,6 @@ body {
 .sb-max-100{max-block-size:100%}
 .sb-100vw{block-size:100vw}
 .sb-100vh{block-size:100vh}
-
 .si-0{inline-size:0}
 .si-auto{inline-size:auto}
 .si-100{inline-size:100%}
@@ -707,6 +706,11 @@ body {
 .select-auto{user-select:auto;}
   
 
+/*** Debug ***/
+.debug * { outline: 2px dotted var(--debug-color, rebeccapurple) }
+.debug *:hover { border:2px solid var(--debug-color, rebeccapurple) }
+  
+
 @media only screen and (min-width:75em) {
   
 
@@ -838,7 +842,6 @@ body {
 .sb-max-100-xl{max-block-size:100%}
 .sb-100vw-xl{block-size:100vw}
 .sb-100vh-xl{block-size:100vh}
-
 .si-0-xl{inline-size:0}
 .si-auto-xl{inline-size:auto}
 .si-100-xl{inline-size:100%}
@@ -1178,6 +1181,11 @@ body {
 .select-text-xl{user-select:text;}
 .select-all-xl{user-select:all;}
 .select-auto-xl{user-select:auto;}
+  
+
+/*** Debug ***/
+.debug * { outline: 2px dotted var(--debug-color, rebeccapurple) }
+.debug *:hover { border:2px solid var(--debug-color, rebeccapurple) }
   
 
 }
