@@ -1,7 +1,7 @@
 import arc from '@architect/functions'
 import { getStyles } from '../../../../../src/index.js'
 
-const handler = arc.http.async(async function () {
+const handler = arc.http(async function () {
   return {
     html: /* html */ `
 <html>

@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs'
 import arc from '@architect/functions'
 const CSS_FILENAME = 'generated.css'
 
-export const handler = arc.http.async(async function () {
+export const handler = arc.http(async function () {
   const stylesPath = join(
     process.cwd(),
     'node_modules',

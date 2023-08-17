@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs'
 import arc from '@architect/functions'
 const CONFIG_FILENAME = 'config.json'
 
-export const handler = arc.http.async(async function () {
+export const handler = arc.http(async function () {
   // Just return the config for now
   const configPath = join(
     process.cwd(),
