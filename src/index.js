@@ -10,8 +10,6 @@ const hydrate = {
     const config = createConfig(params)
     await generateAndSave(config)
 
-    console.log('  Enhance Styles: CSS generated.')
-
     await copy({
       source: TEMP_DIR_NAME, // relative to the project root
       target: '@architect/shared/enhance-styles',
