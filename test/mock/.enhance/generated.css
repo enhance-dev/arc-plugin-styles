@@ -6,18 +6,53 @@
 
 /*** Theme Colors ***/
 :root {
+  --accent: #007aff;
+  --accent-contrast: #343a40;
 
-  --grey-100: hsl(0, 0%, 86%);
-  --grey-200: hsl(0, 0%, 76%);
-  --grey-300: hsl(0, 0%, 66%);
-  --grey-400: hsl(0, 0%, 56%);
-  --grey-500: hsl(0, 0%, 46.7%);
-  --grey-600: hsl(0, 0%, 36%);
-  --grey-700: hsl(0, 0%, 26%);
-  --grey-800: hsl(0, 0%, 16%);
-  --grey-900: hsl(0, 0%, 6%);
+
+  --back: var(--light, #f8f9fa);
+  --fore: var(--dark, #343a40);
+  
+  --grey-100: hsl(210, 0%, 90%);
+  --grey-200: hsl(210, 0%, 80%);
+  --grey-300: hsl(210, 0%, 70%);
+  --grey-400: hsl(210, 0%, 60%);
+  --grey-500: hsl(210, 0%, 50%);
+  --grey-600: hsl(210, 0%, 40%);
+  --grey-700: hsl(210, 0%, 30%);
+  --grey-800: hsl(210, 0%, 20%);
+  --grey-900: hsl(210, 0%, 10%);
     
+  --focus-size: 1px;
+  --focus-offset: 1px;
+  accent-color: var(--accent);
+  color-scheme: light dark;
+}
 
+:is(a, button, input, textarea, summary):focus:not(:focus-visible) {
+  outline: none;
+}
+
+:is(a, button, input, textarea, summary):focus-visible {
+  outline: max(var(--focus-size), 1px) solid var(--accent);
+  outline-offset: var(--focus-offset);
+}
+
+:is(a, button, input, textarea, summary):not(:focus):not(:placeholder-shown):invalid {
+  outline: max(var(--focus-size), 1px) solid var(--error);
+  outline-offset: var(--focus-offset);
+}
+
+:is(a, button, input, textarea, summary):not(:focus):not(:placeholder-shown):invalid {
+  outline: max(var(--focus-size), 1px) solid var(--error);
+  outline-offset: var(--focus-offset);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --back: var(--dark, #343a40);
+    --fore: var(--light, #f8f9fa);
+  }
 }
 
 
@@ -37,9 +72,6 @@
 }
 html:focus-within {
   scroll-behavior: smooth;
-}
-body {
-  min-height: 100vh;
 }
 audio,
 canvas,
@@ -358,10 +390,8 @@ body {
 .sb-auto{block-size:auto}
 .sb-100{block-size:100%}
 .sb-min-0{min-block-size:0}
-.sb-min-none{min-block-size:none}
 .sb-min-100{min-block-size:100%}
 .sb-max-0{max-block-size:0}
-.sb-max-none{max-block-size:none}
 .sb-max-100{max-block-size:100%}
 .sb-100vw{block-size:100vw}
 .sb-100vh{block-size:100vh}
@@ -369,10 +399,8 @@ body {
 .si-auto{inline-size:auto}
 .si-100{inline-size:100%}
 .si-min-0{min-inline-size:0}
-.si-min-none{min-inline-size:none}
 .si-min-100{min-inline-size:100%}
 .si-max0{max-inline-size:0}
-.si-max-none{max-inline-size:none}
 .si-max-100{max-inline-size:100%}
 .si-100vw{inline-size:100vw}
 .si-100vh{inline-size:100vh}
@@ -835,10 +863,8 @@ body {
 .sb-auto-xl{block-size:auto}
 .sb-100-xl{block-size:100%}
 .sb-min-0-xl{min-block-size:0}
-.sb-min-none-xl{min-block-size:none}
 .sb-min-100-xl{min-block-size:100%}
 .sb-max-0-xl{max-block-size:0}
-.sb-max-none-xl{max-block-size:none}
 .sb-max-100-xl{max-block-size:100%}
 .sb-100vw-xl{block-size:100vw}
 .sb-100vh-xl{block-size:100vh}
@@ -846,10 +872,8 @@ body {
 .si-auto-xl{inline-size:auto}
 .si-100-xl{inline-size:100%}
 .si-min-0-xl{min-inline-size:0}
-.si-min-none-xl{min-inline-size:none}
 .si-min-100-xl{min-inline-size:100%}
 .si-max0-xl{max-inline-size:0}
-.si-max-none-xl{max-inline-size:none}
 .si-max-100-xl{max-inline-size:100%}
 .si-100vw-xl{inline-size:100vw}
 .si-100vh-xl{inline-size:100vh}
