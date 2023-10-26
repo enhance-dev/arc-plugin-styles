@@ -33,7 +33,7 @@
   "dependencies": {
     "@architect/functions": "^5.3.1",
     "@architect/inventory": "^3.3.4",
-    "@enhance/styles": "^6.0.0"
+    "@enhance/styles": "^6.1.4"
   },
   "devDependencies": {
     "@architect/eslint-config": "^2.0.1",

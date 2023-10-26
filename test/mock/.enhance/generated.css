@@ -6,26 +6,33 @@
 
 /*** Theme Colors ***/
 :root {
-  --accent: #007aff;
-  --accent-contrast: #343a40;
+  --accent-h: 208;
+  --accent-s: 100%;
+  --accent-l: 42.9%;
+  --accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+  --light: #fefefe;
+  --dark: #222222;
+  --fore: var(--dark, currentColor);
+  --back: var(--light);
+  --error-h: 0;
+  --error-s: 94.5%;
+  --error-l: 43.1%;
+  --error: hsl(var(--error-h), var(--error-s), var(--error-l));
 
 
-  --back: var(--light, #f8f9fa);
-  --fore: var(--dark, #343a40);
-  
-  --grey-100: hsl(210, 0%, 90%);
-  --grey-200: hsl(210, 0%, 80%);
-  --grey-300: hsl(210, 0%, 70%);
-  --grey-400: hsl(210, 0%, 60%);
-  --grey-500: hsl(210, 0%, 50%);
-  --grey-600: hsl(210, 0%, 40%);
-  --grey-700: hsl(210, 0%, 30%);
-  --grey-800: hsl(210, 0%, 20%);
-  --grey-900: hsl(210, 0%, 10%);
+
+  --gray-100: hsl(0, 0%, 90%);
+  --gray-200: hsl(0, 0%, 80%);
+  --gray-300: hsl(0, 0%, 70%);
+  --gray-400: hsl(0, 0%, 60%);
+  --gray-500: hsl(0, 0%, 50%);
+  --gray-600: hsl(0, 0%, 40%);
+  --gray-700: hsl(0, 0%, 30%);
+  --gray-800: hsl(0, 0%, 20%);
+  --gray-900: hsl(0, 0%, 10%);
     
-  --focus-size: 1px;
-  --focus-offset: 1px;
-  accent-color: var(--accent);
+  --focus-l: 30%;
+  accent-color: var(--accent, royalblue);
   color-scheme: light dark;
 }
 
@@ -34,24 +41,26 @@
 }
 
 :is(a, button, input, textarea, summary):focus-visible {
-  outline: max(var(--focus-size), 1px) solid var(--accent);
-  outline-offset: var(--focus-offset);
+  outline: max(var(--focus-size, 1px), 1px) solid var(--accent, royalblue);
+  outline-offset: var(--focus-offset, 0);
+  box-shadow: 0 0 0 max(var(--focus-size, 3px), 3px) hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + var(--focus-l)))
+  ;
 }
 
 :is(a, button, input, textarea, summary):not(:focus):not(:placeholder-shown):invalid {
-  outline: max(var(--focus-size), 1px) solid var(--error);
-  outline-offset: var(--focus-offset);
-}
-
-:is(a, button, input, textarea, summary):not(:focus):not(:placeholder-shown):invalid {
-  outline: max(var(--focus-size), 1px) solid var(--error);
-  outline-offset: var(--focus-offset);
+  outline: max(var(--focus-size, 1px), 1px) solid var(--error, crimson);
+  outline-offset: var(--focus-offset, 0);
+  box-shadow: 0 0 0 3px hsl(var(--error-h), var(--error-s), calc(var(--error-l) + var(--focus-l)));
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --back: var(--dark, #343a40);
-    --fore: var(--light, #f8f9fa);
+    --accent-l: 62%;
+    --error-l: 62%;
+    --focus-l: -30%;
+    --fore: var(--light);
+    --back: var(--dark);
+    
   }
 }
 
@@ -130,6 +139,9 @@ table {
 textarea {
   vertical-align: top;
   overflow: auto;
+}
+dialog {
+  margin: auto;
 }
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
