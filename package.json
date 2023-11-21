@@ -1,6 +1,6 @@
 {
   "name": "@enhance/arc-plugin-styles",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "description": "Plugin for generating enhance CSS utility classes",
   "license": "Apache-2.0",
   "author": "dam",
