@@ -31,7 +31,7 @@
     "url": "git+https://github.com/enhance-dev/arc-plugin-styles.git"
   },
   "dependencies": {
-    "@architect/functions": "^5.3.1",
+    "@architect/functions": "^8.0.4",
     "@enhance/styles": "^6.1.8"
   },
   "devDependencies": {
